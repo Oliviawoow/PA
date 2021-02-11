@@ -1,0 +1,94 @@
+Copyright 2020 OPREA OLIVIA MARIA-MAGDALENA <opreaolivia73@gmail.com>
+
+PROBLEMA 1:
+
+Metoda folosita: Divide et impera && Programare dinamica (tiparul 1)
+
+Complexitatea: O(log(n)) pt tiparul 1 && O(n) pt tiparul 2.
+Parcurgerea si creerea vectorilor se realizeaza in O(n) in cazul tiparului 2.
+Exponentierea logaritmica se realizeaza in O(log(n))
+
+Abordare: Am facut 2 cazuri: in cazul in care tipul de instructiune este 1 si
+in cazul in care este 2. 
+In cazul in care este 1 am folosit metoda Divide et Impera pentru a calcula 
+formula 5 * 2 ^ (n - 1), mai exact exponentierea logaritmica din laboratorul 1,
+(sol_2020_dn.cpp) deoarece era cea mai eficienta metoda de a il ridica pe 2 la 
+n - 1 si pentru a nu imi da time out pe teste.
+In cazul in care ma aflam pe setul de instructiuni cu numarul 2 am folosit
+programarea dinamica, mai exact tiparul 1. Mi-am creat un vector pentru fiecare
+tip de bacnota cu cazul de baza 1, iar apoi cu un for de la 1 la n am creat pt
+fiecare tip de bacnota cate posibilitati de imperechere sunt in functie de
+bacnotele folosite anterior dupa recurenta pos_x[i] = pos_urmatoarea_bacnota_
+dupa_x[i - 1] + pos_cealalta_bacnota_care_poate_sa_fie_dupa_x[i - 1]. In cazul
+bacnotei de 200 in loc sa adun numai 2 bacnote ca la celelalte adun 3 ca in
+cerinta. Rezultatul in acest caz este suma tuturor bacnotelor de pe pozitia n
+- 1 ale fiecarui vector.
+
+Probleme: Ca probleme pe care le-am avut s-a numarat faptul ca uitam sa impart
+la MOD si normal ca nu imi iesea rezultatul dorit si faprul ca testele au niste
+numere destul de mari si trebuia sa imi declar vectorii si iteratorul de la for
+de tipul long pentru a functiona si inca nu stiu de ce la unii colegi a mers cu
+int si la mine nu imi treceau unele teste, adica chiar nu inteleg.
+O alta problema pe care nu am reusit sa o rezolv, dar care mi-ar fii micsorat
+codul si m-ar fii facut sa scap de acel if pentru cazul 1 si cazul 2 este aceea
+ca imi dadea Run time error pe testele de la tipul 1 in cazul in care faceam
+doar un if pt vectorul bacnotei de 200, adica in loc sa am cum am acum pos_200
+[i] = suma de alte trei bacnote, eu incercasem sa am un if care pt tipul 1 facea
+suma de 2 bacnote care puteau sa o urmeze pe cea de 200, iar in cazul in care
+era tipul 2 facea suma celor 3 bacnote si asta ar fii insemnat sa mai scriu doar
+2 randuri in plus. Nu stiu din ce cauza imi dadea Run time error si nu am reusit
+sa rezolv aceasta problema si de aceea am lasat codul asa cum este si m-am
+folosit de laboratorul 1 pentru a ridica la putere.
+
+********************************************************************************
+
+PROBLEMA 2:
+
+Metoda folosita: Greedy.
+
+Complexitatea: T(n) = O(n * log(n))
+Sortarea se realizeaza in O(n * log(n)), iar parcurgerea vectorului se
+realizeaza in O(n).
+
+Abordare: Am sortat vectorul de perechi crescator dupa inceput si descrescator
+dupa final, iar apoi am comparat perechiile vectorului pentru a vedea daca sunt
+incluse intr-o pereche anterioara sau nu. Daca erau incluse cresteam rezultatul
+si treceam la urmatorul interval pentru a il compara in continuare, altfel
+continuam de la acea pozitie cu care comparasem si comparam cu urmatoarele
+intervale.
+
+Probleme: Problemele au fost pana sa ma prind cum sa scriu codul in asa fel sa 
+dea rezultatul corect si sa nu imi dea time out. Prima oara am incercat sa
+parcurg vectorul cu un for si cu aceelasi if pe care il am in cod pentru
+compararea intervalelor in loc sa fac ce fac acm in cod, eu incercam sa dau 
+erase la acea pereche din vector, iar rezultatul sa fie cate elemente avea 
+initial - lungimea vectorului de acm. Insa cu aceasta abordare nu imi treceau
+testele din cauza timpului, iar unele din teste dadeau gresit deoarece nu cred
+ca foloseam v.erase() cum trebuie si am senzatia ca stergeam ce nu trebuie,
+chiar daca dupa fiecare stergere eu redimensionam vectorul si intervalul de
+comparare, gandindu-ma ca asa are mai putin de parcurs si ar fii mai eficient.
+Dar totusi cred ca a fost o problema in gandirea mea in folosirea lui erase,
+care imi strica cam tot.
+
+********************************************************************************
+
+PROBLEMA 3:
+
+Metoda folosita: Programare dinamica (tiparul 2)
+
+Complexitatea: T(n) ~ O(n * m)
+
+Abordare: Am salvat intervalele de probleme rezolvate intr-un vector de perechi.
+Mi-am creat o matrice pt care pe linii avem elevii si pe coloane bomboanele pe
+care le pot primii, raspunsul aflandu-se in coltull din dreapta jos, adica la 
+pozitia [n][m]. Ma folosesc de cate bomboane putea sa primeasca inainte si in
+functie de cate bomboane au primit si ceilalti elevi inainte. Pentru a miscora
+intervalul in care scriem am ales sa populez matricea numai in intervalele de
+probleme pe care le-a rezolvat fiecare elev, asa micsorand complexiatea (cred).
+
+Probleme: Problemele de care m-am lovit au fost pana sa ma prind cum se rezolva
+problema eficient, deoarece eu la inceput incercam sa iau cel mai mic numar din
+fiecare interval al unui elev si sa scad din numarul de bomboane si din ultimul
+interval sa iau cate bomboane mai am nevoie si tot asa, dar acecasta abordare nu
+parea prea eficienta. Am mai avut probleme la impartirea cu MOD ca aparent nu
+imi mergea pe aceeasi linie cu adunarea.
