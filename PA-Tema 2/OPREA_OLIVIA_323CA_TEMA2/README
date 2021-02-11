@@ -1,0 +1,48 @@
+Copyright 2020 OPREA OLIVIA MARIA-MAGDALENA <opreaolivia73@gmail.com>
+
+PROBLEMA 1:
+
+Metoda folosita: TODO
+
+Complexitatea: TODO
+
+Abordare: TODO
+
+Probleme: TODO
+
+********************************************************************************
+
+PROBLEMA 2:
+
+!!!AM FOLOSIT ALGORITMUL FACUT LA LABORATOR!!!
+
+Metoda folosita: BellmanFord
+
+Complexitatea: O(m * n)
+
+Abordare: Caut drumul cu efortul minim intr-un graf orientat pornind din orasul
+sursa pana in orasul destinatie. Rezultatul de afla in vectorul de drumuri al
+nodului destinatie.
+
+Probleme: -
+
+********************************************************************************
+
+PROBLEMA 3:
+
+!!!AM FOLOSIT ALGORITMUL FACUT LA LABORATOR!!!
+
+Metoda folosita: Dijkstra
+
+Complexitatea: O(m logn)
+
+Abordare: Caut drumul care v-a scadea din energia initiala cat mai putin
+intr-un graf orientat. 
+Functia rebuild_path reface drumul de la sursa la destinatie pentru a afisa
+intreg drumul parcus.
+Pentru energie m-am folosit de energia pe care o aveam in acel nod - energia
+nodului trecut pentru a optine energia de la nodul trecut la nodul curent (cel
+mai probabil m-am complicat).
+
+Probleme: Uitam sa initializez energia_finala la inceput asa ca nu aveam cu cine
+sa inmultesc (greseala mea :)).
